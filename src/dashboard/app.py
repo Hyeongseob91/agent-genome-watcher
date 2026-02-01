@@ -1,5 +1,11 @@
 """Agent Genome Watcher - Moltbook AI Agent 분석 대시보드"""
 
+import sys
+from pathlib import Path
+
+# Add project root to path for Streamlit Cloud
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
 import streamlit as st
 from collections import Counter
 import threading
