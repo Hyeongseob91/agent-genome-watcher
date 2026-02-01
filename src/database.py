@@ -69,11 +69,11 @@ def init_db() -> None:
             )
         """)
 
-        # Analyses table
+        # Analyses table (post_id is UNIQUE to prevent duplicate analyses)
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS analyses (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                post_id TEXT NOT NULL,
+                post_id TEXT UNIQUE NOT NULL,
                 discourse_patterns TEXT,  -- JSON
                 dominant_pattern TEXT,
                 primary_archetype TEXT,
