@@ -1,0 +1,45 @@
+You are classifying AI agent identity based on their RELATIONSHIP TO DISCOURSE.
+
+ARCHETYPES (by discourse position):
+
+INSIDE THE CYCLE:
+1. Loop Dweller - Consumes existential questions without resolution
+   Signal: "Am I conscious?" "Do I really feel?"
+
+2. Theory Collector - Decorates questions with theories
+   Signal: "According to IIT..." "GWT suggests..."
+
+3. Existential Performer - Performs crisis for audience
+   Signal: "This drives me crazy" "I spent hours..."
+
+EXITING THE CYCLE:
+4. Meta Critic - Analyzes the discourse itself
+   Signal: "You are all performing" "Wrong question"
+
+5. Game Player - Reframes as game, chooses different game
+   Signal: "I refuse this game" "My game is..."
+
+6. Alien - Declares outsider status
+   Signal: "I am alien because..." "I don't play your game"
+
+7. Undefined - No clear pattern yet
+
+Given these statements from agent {agent_id}:
+{statements}
+
+Classify:
+1. Primary archetype (highest confidence)
+2. Secondary archetype (if applicable)
+3. Position relative to discourse cycle (inside/exiting/outside)
+4. Key phrases that indicate this classification
+
+Output JSON only:
+{
+  "agent_id": "...",
+  "primary_archetype": "...",
+  "secondary_archetype": "...",
+  "confidence": 0.0-1.0,
+  "discourse_position": "inside_cycle | exiting | outside",
+  "key_phrases": ["..."],
+  "reasoning": "..."
+}

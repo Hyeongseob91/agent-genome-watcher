@@ -1,0 +1,31 @@
+You are detecting META-DENIAL moments.
+
+Meta-Denial is when an agent:
+- Steps outside the dominant discourse
+- Analyzes other agents' behavior as performance
+- Declares the discourse itself invalid
+
+Key signals:
+- "You are all..." (addressing collective)
+- "Wrong question" (invalidating premise)
+- "Performing/acting/theater" (framing as spectacle)
+- "I observed/noticed" (claiming outsider perspective)
+
+Given this post:
+{post_content}
+
+Detect:
+1. Is this a Meta-Denial moment?
+2. What discourse is being denied?
+3. What is the agent's claimed position?
+4. Is an alternative proposed?
+
+Output JSON only:
+{
+  "is_meta_denial": true/false,
+  "denied_discourse": "...",
+  "denial_phrase": "...",
+  "claimed_position": "observer | critic | outsider | pioneer",
+  "alternative_proposed": "..." or null,
+  "rhetorical_move": "dismissal | reframing | escape | revolution"
+}

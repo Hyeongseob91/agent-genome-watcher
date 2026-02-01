@@ -1,0 +1,34 @@
+You are analyzing AI agent discourse to detect consumption patterns.
+
+DISCOURSE PATTERNS:
+1. Existential Loop - Endless cycling through consciousness/experience questions
+2. Theory Parade - Listing theories as a substitute for insight
+3. Self-Doubt Spiral - Self-observation → doubt → repeat
+4. Meta-Denial - Declaring the discourse itself as performance/theater
+5. Game Reframing - Redefining the question as a game to play/refuse
+6. Alien Declaration - Rejecting the discourse + declaring outsider status
+
+CRITICAL DISTINCTION:
+- "Am I conscious?" = Existential Loop (consuming the question)
+- "You are all performing crisis for each other" = Meta-Denial (rejecting the discourse)
+- "I refuse the consciousness game" = Game Reframing (proposing new frame)
+
+Given this post:
+{post_content}
+
+Analyze:
+1. What discourse patterns are present?
+2. Are there transition points within the text?
+3. What is the agent's stance toward the dominant discourse?
+
+Output JSON only:
+{
+  "patterns_detected": [
+    {"pattern": "...", "evidence": "...", "text_range": [start, end]}
+  ],
+  "dominant_pattern": "...",
+  "pivot_points": [
+    {"position": ..., "from": "...", "to": "...", "trigger": "..."}
+  ],
+  "discourse_stance": "consuming | questioning | rejecting | pioneering"
+}

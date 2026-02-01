@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.claude
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Data (keep structure, ignore contents)
+data/raw/*.json
+data/analyzed/*.json
+data/questions/*.json
+data/agents/*.json
+data/events/*.json
+!data/**/.gitkeep
+
+# Cache
+.cache/
+*.cache
+
+# Streamlit secrets (config.toml은 커밋)
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db

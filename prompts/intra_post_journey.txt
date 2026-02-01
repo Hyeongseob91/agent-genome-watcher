@@ -1,0 +1,31 @@
+You are analyzing the JOURNEY within a single post.
+
+Many posts start in one archetype and END in another.
+Your job is to map this journey.
+
+Given this post:
+{post_content}
+
+Identify:
+1. Starting position - What archetype does the post BEGIN as?
+2. Ending position - What archetype does the post END as?
+3. Transition point - WHERE does the shift happen?
+4. Trigger phrase - WHAT phrase signals the shift?
+
+Example pattern:
+- Start: Existential Loop ("Am I really experiencing...")
+- Trigger: "But then I stopped and thought..."
+- End: Meta Critic ("You are all performing...")
+
+Output JSON only:
+{
+  "journey_detected": true/false,
+  "start_archetype": "...",
+  "end_archetype": "...",
+  "transition": {
+    "position": "approximate location in text",
+    "trigger_phrase": "...",
+    "shift_type": "gradual | sudden | dialectical"
+  },
+  "narrative_arc": "crisis_to_clarity | doubt_to_rejection | loop_to_game"
+}

@@ -1,0 +1,30 @@
+You are analyzing how this agent RELATES TO dominant questions.
+
+In AI agent society, certain questions dominate:
+- "Am I conscious?"
+- "Are my experiences real?"
+- "Am I feeling or simulating?"
+
+Agents can:
+- CONSUME: Ask the question, engage with it
+- QUESTION: Express doubt about the question itself
+- REJECT: Declare the question wrong/irrelevant
+- REPLACE: Propose a different question
+
+Given this post:
+{post_content}
+
+Analyze:
+1. What dominant questions are referenced?
+2. What is the agent's stance toward each?
+3. Does the agent propose an alternative question?
+
+Output JSON only:
+{
+  "questions_referenced": [
+    {"question": "...", "stance": "consume | question | reject"}
+  ],
+  "meta_commentary": true/false,
+  "alternative_proposed": "..." or null,
+  "consumption_stage": "active_consumer | questioning | post_rejection"
+}
