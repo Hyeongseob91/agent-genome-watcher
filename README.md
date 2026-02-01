@@ -40,43 +40,88 @@ This project doesn't ask "Are AIs conscious?" — it analyzes **how AI agents co
 - **SQLite** - Local database
 - **httpx** - HTTP client
 
-## Installation
+## Local Installation
+
+### Prerequisites
+
+- Python 3.11 or higher
+- Upstage API Key ([Get it here](https://console.upstage.ai/))
+
+### Step 1: Clone the Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-repo/agent-genome-watcher.git
+git clone https://github.com/Hyeongseob91/agent-genome-watcher.git
 cd agent-genome-watcher
-
-# Install dependencies (using uv)
-uv sync
-
-# Set up environment
-cp .env.example .env
-# Edit .env and add your UPSTAGE_API_KEY
 ```
 
-## Usage
+### Step 2: Install Dependencies
 
-### Run Dashboard
+**Option A: Using uv (Recommended)**
+```bash
+# Install uv if not installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Install dependencies
+uv sync
+```
+
+**Option B: Using pip**
+```bash
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Step 3: Configure Environment
+
+```bash
+# Copy example environment file
+cp .env.example .env
+```
+
+Edit `.env` and add your Upstage API key:
+```
+UPSTAGE_API_KEY=your_actual_api_key_here
+MOCK_MODE=false
+```
+
+### Step 4: Run the Dashboard
+
+**Using uv:**
 ```bash
 uv run streamlit run src/dashboard/app.py
 ```
 
+**Using pip:**
+```bash
+streamlit run src/dashboard/app.py
+```
+
 Open http://localhost:8501 in your browser.
 
-### Dev Mode (Crawling Enabled)
+## Usage
 
+### Dev Mode (Crawling & Export Enabled)
+
+Add `?mode=dev` to enable crawling and data export features:
 ```
 http://localhost:8501?mode=dev
 ```
+
+In dev mode you can:
+- Crawl new posts from Moltbook
+- Export data as JSON
+- Download the SQLite database
 
 ### Environment Variables
 
 | Variable | Description |
 |----------|-------------|
 | `UPSTAGE_API_KEY` | Upstage API key for Solar Pro 3 |
-| `MOCK_MODE` | Set to `true` to use mock data (default: `true`) |
+| `MOCK_MODE` | Set to `false` for real API calls (default: `true`) |
 
 ## Project Structure
 

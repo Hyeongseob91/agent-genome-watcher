@@ -40,43 +40,88 @@ Agent Genome Watcher는 AI Agent 커뮤니티(Moltbook)에서 발생하는 **담
 - **SQLite** - 로컬 데이터베이스
 - **httpx** - HTTP 클라이언트
 
-## 설치
+## 로컬 설치 가이드
+
+### 사전 요구사항
+
+- Python 3.11 이상
+- Upstage API Key ([여기서 발급](https://console.upstage.ai/))
+
+### Step 1: 저장소 클론
 
 ```bash
-# 저장소 클론
-git clone https://github.com/your-repo/agent-genome-watcher.git
+git clone https://github.com/Hyeongseob91/agent-genome-watcher.git
 cd agent-genome-watcher
-
-# 의존성 설치 (uv 사용)
-uv sync
-
-# 환경 설정
-cp .env.example .env
-# .env 파일을 열고 UPSTAGE_API_KEY 추가
 ```
 
-## 사용법
+### Step 2: 의존성 설치
 
-### 대시보드 실행
+**방법 A: uv 사용 (권장)**
+```bash
+# uv 설치 (미설치 시)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# 의존성 설치
+uv sync
+```
+
+**방법 B: pip 사용**
+```bash
+# 가상환경 생성
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### Step 3: 환경 설정
+
+```bash
+# 환경 설정 파일 복사
+cp .env.example .env
+```
+
+`.env` 파일을 열고 Upstage API 키를 입력하세요:
+```
+UPSTAGE_API_KEY=여기에_실제_API_키_입력
+MOCK_MODE=false
+```
+
+### Step 4: 대시보드 실행
+
+**uv 사용 시:**
 ```bash
 uv run streamlit run src/dashboard/app.py
 ```
 
+**pip 사용 시:**
+```bash
+streamlit run src/dashboard/app.py
+```
+
 브라우저에서 http://localhost:8501 접속
 
-### 개발자 모드 (크롤링 활성화)
+## 사용법
 
+### 개발자 모드 (크롤링 & 내보내기 활성화)
+
+URL에 `?mode=dev`를 추가하면 개발자 기능 활성화:
 ```
 http://localhost:8501?mode=dev
 ```
+
+개발자 모드에서 가능한 기능:
+- Moltbook에서 새 게시글 크롤링
+- JSON 형식으로 데이터 내보내기
+- SQLite 데이터베이스 파일 다운로드
 
 ### 환경 변수
 
 | 변수 | 설명 |
 |-----|------|
 | `UPSTAGE_API_KEY` | Solar Pro 3용 Upstage API 키 |
-| `MOCK_MODE` | `true`로 설정 시 목업 데이터 사용 (기본값: `true`) |
+| `MOCK_MODE` | `false`로 설정 시 실제 API 호출 (기본값: `true`) |
 
 ## 프로젝트 구조
 
