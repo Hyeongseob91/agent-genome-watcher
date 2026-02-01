@@ -17,9 +17,12 @@ st.set_page_config(
     layout="wide",
 )
 
+import json
+from datetime import datetime
+
 from src.crawler import MoltbookCrawler
 from src.analysis import PostAnalyzer
-from src.database import PostRepository, AnalysisRepository, init_db, get_db
+from src.database import PostRepository, AnalysisRepository, init_db, get_db, DB_PATH
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -168,6 +171,40 @@ def main():
                 st.sidebar.success(f"{len(new_posts)}개 크롤링 완료!")
                 st.session_state.pop("analyses", None)
                 st.rerun()
+
+        # DB Export 기능
+        st.sidebar.markdown("")
+        st.sidebar.markdown("**📦 데이터 내보내기**")
+
+        # JSON Export (분석 결과)
+        all_analyses = AnalysisRepository.get_all(limit=5000)
+        all_posts = PostRepository.get_all(limit=5000)
+        export_data = {
+            "exported_at": datetime.now().isoformat(),
+            "posts_count": len(all_posts),
+            "analyses_count": len(all_analyses),
+            "posts": all_posts,
+            "analyses": all_analyses
+        }
+        json_str = json.dumps(export_data, ensure_ascii=False, indent=2, default=str)
+
+        st.sidebar.download_button(
+            label="📥 JSON 내보내기",
+            data=json_str,
+            file_name=f"genome_watcher_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+            mime="application/json"
+        )
+
+        # SQLite DB 파일 다운로드
+        if DB_PATH.exists():
+            with open(DB_PATH, "rb") as f:
+                db_bytes = f.read()
+            st.sidebar.download_button(
+                label="💾 DB 파일 다운로드",
+                data=db_bytes,
+                file_name=f"genome_watcher_{datetime.now().strftime('%Y%m%d_%H%M%S')}.db",
+                mime="application/octet-stream"
+            )
 
     # Sidebar Footer (하단 고정)
     st.sidebar.markdown("<br><br><br>", unsafe_allow_html=True)
